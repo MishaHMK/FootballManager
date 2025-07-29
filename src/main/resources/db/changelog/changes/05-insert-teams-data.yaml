@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-teams-data
+      author: footballManager
+      changes:
+        - insert:
+            tableName: teams
+            columns:
+              - column:
+                  name: name
+                  value: "Juventus"
+              - column:
+                  name: budget
+                  value: '12000000'
+              - column:
+                  name: transfer_fee
+                  value: '5'
+        - insert:
+            tableName: teams
+            columns:
+              - column:
+                  name: name
+                  value: "Chelsea"
+              - column:
+                  name: budget
+                  value: "25000000"
+              - column:
+                  name: transfer_fee
+                  value: '8'

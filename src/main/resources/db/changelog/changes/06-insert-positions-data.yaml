@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-positions-data
+      author: footballManager
+      changes:
+        - insert:
+            tableName: positions
+            columns:
+            - column:
+                name: name
+                value: 'Goalkeeper'
+        - insert:
+              tableName: positions
+              columns:
+              - column:
+                  name: name
+                  value: 'Defender'
+        - insert:
+              tableName: positions
+              columns:
+                - column:
+                    name: name
+                    value: 'Midfielder'
+        - insert:
+              tableName: positions
+              columns:
+                - column:
+                    name: name
+                    value: 'Forward'

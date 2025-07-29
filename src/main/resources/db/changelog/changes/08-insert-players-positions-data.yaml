@@ -1,0 +1,224 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-players-positions-data
+      author: footballManager
+      changes:
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '1'
+              - column:
+                  name: position_id
+                  value: '1'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '2'
+              - column:
+                  name: position_id
+                  value: '1'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '2'
+              - column:
+                  name: position_id
+                  value: '2'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '3'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '3'
+              - column:
+                  name: position_id
+                  value: '2'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '4'
+              - column:
+                  name: position_id
+                  value: '2'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '4'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '4'
+              - column:
+                  name: position_id
+                  value: '4'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '5'
+              - column:
+                  name: position_id
+                  value: '2'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '6'
+              - column:
+                  name: position_id
+                  value: '2'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '6'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '7'
+              - column:
+                  name: position_id
+                  value: '3'
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '7'
+              - column:
+                  name: position_id
+                  value: '1'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '8'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '9'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '10'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '11'
+              - column:
+                  name: position_id
+                  value: '4'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '11'
+              - column:
+                  name: position_id
+                  value: '3'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '12'
+              - column:
+                  name: position_id
+                  value: '4'
+
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '13'
+              - column:
+                  name: position_id
+                  value: '2'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '13'
+              - column:
+                  name: position_id
+                  value: '1'
+
+        - insert:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  value: '14'
+              - column:
+                  name: position_id
+                  value: '4'

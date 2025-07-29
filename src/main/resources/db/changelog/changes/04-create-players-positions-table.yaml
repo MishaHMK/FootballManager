@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-players_positions-table
+      author: bookstore
+      changes:
+        - createTable:
+            tableName: players_positions
+            columns:
+              - column:
+                  name: player_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: position_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseColumnNames: player_id
+            baseTableName: players_positions
+            constraintName: fk_players_positions
+            referencedColumnNames: id
+            referencedTableName: players
+
+        - addForeignKeyConstraint:
+            baseColumnNames: position_id
+            baseTableName: players_positions
+            constraintName: fk_positions_players
+            referencedColumnNames: id
+            referencedTableName: positions

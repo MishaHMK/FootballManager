@@ -1,0 +1,270 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-players-data
+      author: footballManager
+      changes:
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '1'
+              - column:
+                  name: first_name
+                  value: 'Lucas'
+              - column:
+                  name: last_name
+                  value: 'Bergström'
+              - column:
+                  name: birth_date
+                  value: '1996-10-02'
+              - column:
+                  name: experience
+                  value: '48'
+
+        - insert:
+              tableName: players
+              columns:
+                - column:
+                    name: team_id
+                    value: '2'
+                - column:
+                    name: first_name
+                    value: 'Nicola'
+                - column:
+                    name: last_name
+                    value: 'Pirelli'
+                - column:
+                    name: birth_date
+                    value: '1994-03-01'
+                - column:
+                    name: experience
+                    value: '60'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Leonardo'
+              - column:
+                  name: last_name
+                  value: 'Grok'
+              - column:
+                  name: birth_date
+                  value: '2000-02-17'
+              - column:
+                  name: experience
+                  value: '36'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Vito'
+              - column:
+                  name: last_name
+                  value: 'Harrington'
+              - column:
+                  name: birth_date
+                  value: '1995-04-30'
+              - column:
+                  name: experience
+                  value: '42'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '1'
+              - column:
+                  name: first_name
+                  value: 'Alex'
+              - column:
+                  name: last_name
+                  value: 'Jordan'
+              - column:
+                  name: birth_date
+                  value: '1999-12-21'
+              - column:
+                  name: experience
+                  value: '45'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '1'
+              - column:
+                  name: first_name
+                  value: 'Winston'
+              - column:
+                  name: last_name
+                  value: 'Lucas'
+              - column:
+                  name: birth_date
+                  value: '1998-08-13'
+              - column:
+                  name: experience
+                  value: '55'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Victor'
+              - column:
+                  name: last_name
+                  value: 'Dweller'
+              - column:
+                  name: birth_date
+                  value: '2003-05-15'
+              - column:
+                  name: experience
+                  value: '12'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Alex'
+              - column:
+                  name: last_name
+                  value: 'Jordan'
+              - column:
+                  name: birth_date
+                  value: '1998-08-21'
+              - column:
+                  name: experience
+                  value: '55'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '1'
+              - column:
+                  name: first_name
+                  value: 'Edward'
+              - column:
+                  name: last_name
+                  value: 'Boomer'
+              - column:
+                  name: birth_date
+                  value: '1997-06-09'
+              - column:
+                  name: experience
+                  value: '35'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '1'
+              - column:
+                  name: first_name
+                  value: 'Donald'
+              - column:
+                  name: last_name
+                  value: 'Hunter'
+              - column:
+                  name: birth_date
+                  value: '1997-05-25'
+              - column:
+                  name: experience
+                  value: '48'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Harrison'
+              - column:
+                  name: last_name
+                  value: 'North'
+              - column:
+                  name: birth_date
+                  value: '2002-11-11'
+              - column:
+                  name: experience
+                  value: '14'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Ronald'
+              - column:
+                  name: last_name
+                  value: 'Wisconsin'
+              - column:
+                  name: birth_date
+                  value: '1999-12-15'
+              - column:
+                  name: experience
+                  value: '29'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '2'
+              - column:
+                  name: first_name
+                  value: 'Rob'
+              - column:
+                  name: last_name
+                  value: 'Iger'
+              - column:
+                  name: birth_date
+                  value: '1998-09-15'
+              - column:
+                  name: experience
+                  value: '25'
+
+        - insert:
+            tableName: players
+            columns:
+              - column:
+                  name: team_id
+                  value: '1'
+              - column:
+                  name: first_name
+                  value: 'Antonio'
+              - column:
+                  name: last_name
+                  value: 'Riker'
+              - column:
+                  name: birth_date
+                  value: '1999-02-28'
+              - column:
+                  name: experience
+                  value: '29'

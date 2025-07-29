@@ -40,7 +40,7 @@ public class Player {
     private LocalDate birthDate;
 
     @Column(nullable = false)
-    private Integer experience;
+    private LocalDate careerStartDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "team_id", nullable = false)
@@ -54,6 +54,4 @@ public class Player {
 
     @Column(nullable = false)
     private boolean isDeleted = false;
-
-
 }

@@ -19,8 +19,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1996-10-02'
               - column:
-                  name: experience
-                  value: '48'
+                  name: career_start_date
+                  value: '2020-10-02'
 
         - insert:
               tableName: players
@@ -38,8 +38,8 @@ databaseChangeLog:
                     name: birth_date
                     value: '1994-03-01'
                 - column:
-                    name: experience
-                    value: '60'
+                    name: career_start_date
+                    value: '2019-03-01'
 
         - insert:
             tableName: players
@@ -57,8 +57,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '2000-02-17'
               - column:
-                  name: experience
-                  value: '36'
+                  name: career_start_date
+                  value: '2022-02-17'
 
         - insert:
             tableName: players
@@ -76,8 +76,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1995-04-30'
               - column:
-                  name: experience
-                  value: '42'
+                  name: career_start_date
+                  value: '2021-08-30'
 
         - insert:
             tableName: players
@@ -95,8 +95,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1999-12-21'
               - column:
-                  name: experience
-                  value: '45'
+                  name: career_start_date
+                  value: '2021-10-30'
 
         - insert:
             tableName: players
@@ -114,8 +114,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1998-08-13'
               - column:
-                  name: experience
-                  value: '55'
+                  name: career_start_date
+                  value: '2018-11-01'
 
         - insert:
             tableName: players
@@ -133,8 +133,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '2003-05-15'
               - column:
-                  name: experience
-                  value: '12'
+                  name: career_start_date
+                  value: '2024-03-01'
 
         - insert:
             tableName: players
@@ -152,8 +152,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1998-08-21'
               - column:
-                  name: experience
-                  value: '55'
+                  name: career_start_date
+                  value: '2019-09-30'
 
         - insert:
             tableName: players
@@ -171,8 +171,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1997-06-09'
               - column:
-                  name: experience
-                  value: '35'
+                  name: career_start_date
+                  value: '2022-06-15'
 
         - insert:
             tableName: players
@@ -190,8 +190,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1997-05-25'
               - column:
-                  name: experience
-                  value: '48'
+                  name: career_start_date
+                  value: '2022-05-21'
 
         - insert:
             tableName: players
@@ -209,8 +209,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '2002-11-11'
               - column:
-                  name: experience
-                  value: '14'
+                  name: career_start_date
+                  value: '2024-03-21'
 
         - insert:
             tableName: players
@@ -228,15 +228,15 @@ databaseChangeLog:
                   name: birth_date
                   value: '1999-12-15'
               - column:
-                  name: experience
-                  value: '29'
+                  name: career_start_date
+                  value: '2023-12-01'
 
         - insert:
             tableName: players
             columns:
               - column:
                   name: team_id
-                  value: '2'
+                  value: '1'
               - column:
                   name: first_name
                   value: 'Rob'
@@ -247,8 +247,8 @@ databaseChangeLog:
                   name: birth_date
                   value: '1998-09-15'
               - column:
-                  name: experience
-                  value: '25'
+                  name: career_start_date
+                  value: '2023-04-11'
 
         - insert:
             tableName: players
@@ -266,5 +266,5 @@ databaseChangeLog:
                   name: birth_date
                   value: '1999-02-28'
               - column:
-                  name: experience
-                  value: '29'
+                  name: career_start_date
+                  value: '2022-11-11'

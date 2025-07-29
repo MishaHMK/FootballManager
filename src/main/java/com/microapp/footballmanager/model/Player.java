@@ -11,14 +11,9 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
@@ -33,7 +28,7 @@ import org.hibernate.annotations.SQLRestriction;
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Column(nullable = false)
     private String firstName;
@@ -45,7 +40,7 @@ public class Player {
     private LocalDate birthDate;
 
     @Column(nullable = false)
-    private Integer experience;
+    private LocalDate careerStartDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "team_id", nullable = false)
@@ -59,6 +54,4 @@ public class Player {
 
     @Column(nullable = false)
     private boolean isDeleted = false;
-
-
 }

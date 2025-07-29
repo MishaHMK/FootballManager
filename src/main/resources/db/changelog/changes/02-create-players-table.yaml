@@ -34,8 +34,8 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: experience
-                  type: integer
+                  name: career_start_date
+                  type: date
                   constraints:
                     nullable: false
               - column:

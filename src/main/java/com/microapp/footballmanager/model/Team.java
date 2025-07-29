@@ -9,7 +9,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
@@ -20,7 +19,7 @@ import org.hibernate.annotations.SQLRestriction;
 @Entity
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE players SET is_deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE teams SET is_deleted = true WHERE id = ?")
 @SQLRestriction(value = "is_deleted = false")
 @Table(name = "teams")
 public class Team {

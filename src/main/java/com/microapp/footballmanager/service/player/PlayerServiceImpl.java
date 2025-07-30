@@ -5,10 +5,13 @@ import com.microapp.footballmanager.dtos.player.PlayerDto;
 import com.microapp.footballmanager.dtos.player.UpdatePlayerDto;
 import com.microapp.footballmanager.mapper.PlayerMapper;
 import com.microapp.footballmanager.model.Player;
+import com.microapp.footballmanager.model.Position;
 import com.microapp.footballmanager.model.Team;
 import com.microapp.footballmanager.repository.PlayersRepository;
+import com.microapp.footballmanager.repository.PositionsRepository;
 import com.microapp.footballmanager.repository.TeamsRepository;
 import jakarta.persistence.EntityNotFoundException;
+import java.util.HashSet;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PlayerServiceImpl implements PlayersService {
     private final PlayersRepository playersRepository;
+    private final PositionsRepository positionsRepository;
     private final TeamsRepository teamsRepository;
     private final PlayerMapper playerMapper;
 
@@ -56,9 +60,7 @@ public class PlayerServiceImpl implements PlayersService {
     public PlayerDto update(Long id, UpdatePlayerDto updatePlayerDto) {
         Player playerToUpdate = getPlayerByIdWithTeam(id);
         playerMapper.updateFromDto(updatePlayerDto, playerToUpdate);
-        playersRepository.save(playerToUpdate);
-        Player updatedPlayer = getPlayerByIdWithTeam(id);
-        return playerMapper.toDto(updatedPlayer);
+        return playerMapper.toDto(playerToUpdate);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -68,9 +70,7 @@ public class PlayerServiceImpl implements PlayersService {
         Team newTeam = teamsRepository.findById(newTeamId)
                 .orElseThrow(() -> new EntityNotFoundException("Can't find team by id " + id));
         playerToUpdate.setTeam(newTeam);
-        playersRepository.save(playerToUpdate);
-        Player updatedPlayer = getPlayerByIdWithTeam(id);
-        return playerMapper.toDto(updatedPlayer);
+        return playerMapper.toDto(playerToUpdate);
     }
 
     private Player getPlayerByIdWithTeam(Long id) {

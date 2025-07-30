@@ -62,9 +62,7 @@ public class TeamsServiceImpl implements TeamsService {
     public TeamDto update(Long id, UpdateTeamDto teamRequestDto) {
         Team teamToUpdate = getTeamByIdWithPlayers(id);
         teamMapper.updateFromDto(teamRequestDto, teamToUpdate);
-        teamsRepository.save(teamToUpdate);
-        Team updatedTeam = getTeamByIdWithPlayers(id);
-        return teamMapper.toDto(updatedTeam);
+        return teamMapper.toDto(teamToUpdate);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -72,9 +70,7 @@ public class TeamsServiceImpl implements TeamsService {
     public TeamDto updateBudget(Long id, Long budget) {
         Team teamToUpdate = getTeamByIdWithPlayers(id);
         teamToUpdate.setBudget(budget);
-        teamsRepository.save(teamToUpdate);
-        Team updatedTeam = getTeamByIdWithPlayers(id);
-        return teamMapper.toDto(updatedTeam);
+        return teamMapper.toDto(teamToUpdate);
     }
 
     private Team getTeamById(Long id) {

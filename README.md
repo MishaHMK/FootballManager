@@ -20,3 +20,5 @@ Java 17, Maven, Spring Boot, Hibernate, PostgreSQL
 ## Test how project works: [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/team66-9067/michhmk-public/collection/5zle125/football-management-api) 
 
 You can also import my Postman collection and modify for your needs
+<img width="963" height="733" alt="image" src="https://github.com/user-attachments/assets/9c8b0485-92c3-4985-ab6b-265ac51da31b" />
+

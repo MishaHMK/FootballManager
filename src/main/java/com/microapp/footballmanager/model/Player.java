@@ -46,7 +46,7 @@ public class Player {
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany()
     @JoinTable(name = "players_positions",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "position_id"))

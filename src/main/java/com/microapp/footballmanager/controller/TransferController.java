@@ -1,7 +1,7 @@
 package com.microapp.footballmanager.controller;
 
-import com.microapp.footballmanager.dtos.transfer.CreateTransferDto;
-import com.microapp.footballmanager.dtos.transfer.TransferDto;
+import com.microapp.footballmanager.dto.transfer.CreateTransferDto;
+import com.microapp.footballmanager.dto.transfer.TransferDto;
 import com.microapp.footballmanager.service.transfer.TransferService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

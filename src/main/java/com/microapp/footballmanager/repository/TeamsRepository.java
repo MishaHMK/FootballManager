@@ -9,9 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface TeamsRepository extends JpaRepository<Team, Long> {
-    @EntityGraph(attributePaths = "players")
+    @EntityGraph(attributePaths = {"players", "players.positions"})
     Page<Team> findAll(Pageable pageable);
 
-    @Query("SELECT t FROM Team t LEFT JOIN FETCH t.players WHERE t.id = :id")
+    @Query("SELECT t FROM Team t "
+            + "LEFT JOIN FETCH t.players p "
+            + "LEFT JOIN FETCH p.positions "
+            + "WHERE t.id = :id")
     Optional<Team> getTeamByIdWithPlayers(Long id);
 }

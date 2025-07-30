@@ -1,15 +1,15 @@
 package com.microapp.footballmanager.service.team;
 
-import com.microapp.footballmanager.dtos.team.CreateTeamDto;
-import com.microapp.footballmanager.dtos.team.TeamDto;
-import com.microapp.footballmanager.dtos.team.TeamWithPlayersDto;
-import com.microapp.footballmanager.dtos.team.UpdateTeamDto;
+import com.microapp.footballmanager.dto.team.CreateTeamDto;
+import com.microapp.footballmanager.dto.team.TeamDto;
+import com.microapp.footballmanager.dto.team.TeamWithPlayersDto;
+import com.microapp.footballmanager.dto.team.UpdateTeamDto;
 import com.microapp.footballmanager.mapper.TeamMapper;
 import com.microapp.footballmanager.model.Team;
 import com.microapp.footballmanager.repository.TeamsRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,25 +22,25 @@ public class TeamsServiceImpl implements TeamsService {
     private final TeamMapper teamMapper;
 
     @Override
-    public List<TeamDto> findAll(Pageable pageable) {
+    public Page<TeamDto> findAll(Pageable pageable) {
         return teamsRepository.findAll(pageable)
-                .stream()
-                .map(teamMapper::toDto)
-                .toList();
+                .map(teamMapper::toDto);
     }
 
     @Override
-    public List<TeamWithPlayersDto> findAllWithPlayerData(Pageable pageable) {
+    public Page<TeamWithPlayersDto> findAllWithPlayerData(Pageable pageable) {
         return teamsRepository.findAll(pageable)
-                .stream()
-                .map(teamMapper::toDtoWithPlayers)
-                .toList();
+                .map(teamMapper::toDtoWithPlayers);
     }
 
     @Override
     public TeamDto findById(long id) {
-        Team team = getTeamByIdWithPlayers(id);
-        return teamMapper.toDto(team);
+        return teamMapper.toDto(getTeamByIdWithPlayers(id));
+    }
+
+    @Override
+    public TeamWithPlayersDto findByWithPlayerDataById(long id) {
+        return teamMapper.toDtoWithPlayers(getTeamByIdWithPlayers(id));
     }
 
     @Transactional
@@ -53,8 +53,9 @@ public class TeamsServiceImpl implements TeamsService {
     @Transactional
     @Override
     public void deleteById(long id) {
-        getTeamById(id);
-        teamsRepository.deleteById(id);
+        if (checkTeamExistsById(id)) {
+            teamsRepository.deleteById(id);
+        }
     }
 
     @Transactional
@@ -81,5 +82,9 @@ public class TeamsServiceImpl implements TeamsService {
     private Team getTeamByIdWithPlayers(Long id) {
         return teamsRepository.getTeamByIdWithPlayers(id).orElseThrow(
                 () -> new EntityNotFoundException("Can't find team by id " + id));
+    }
+
+    private boolean checkTeamExistsById(Long id) {
+        return teamsRepository.existsById(id);
     }
 }

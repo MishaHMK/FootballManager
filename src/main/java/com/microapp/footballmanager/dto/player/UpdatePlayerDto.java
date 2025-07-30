@@ -1,6 +1,8 @@
-package com.microapp.footballmanager.dtos.player;
+package com.microapp.footballmanager.dto.player;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
@@ -22,6 +24,7 @@ public class UpdatePlayerDto {
             + "2 characters long and not longer than 25 characters")
     private String lastName;
 
+    @Min(value = 1, message = "Team id must be bigger than 0")
     @NotNull(message = "Team id is required")
     private Long teamId;
 
@@ -31,6 +34,6 @@ public class UpdatePlayerDto {
     @NotNull(message = "Player's career start date is required")
     private LocalDate careerStartDate;
 
-    @NotNull(message = "Player's positions ids are required")
+    @NotEmpty(message = "Player's positions ids are required")
     private Set<Long> positionIds = new HashSet<>();
 }

@@ -1,8 +1,8 @@
 package com.microapp.footballmanager.service.transfer;
 
-import com.microapp.footballmanager.dtos.player.PlayerDto;
-import com.microapp.footballmanager.dtos.team.TeamDto;
-import com.microapp.footballmanager.dtos.transfer.TransferDto;
+import com.microapp.footballmanager.dto.player.PlayerDto;
+import com.microapp.footballmanager.dto.team.TeamDto;
+import com.microapp.footballmanager.dto.transfer.TransferDto;
 import com.microapp.footballmanager.exception.TransferProcessingException;
 import com.microapp.footballmanager.service.player.PlayersService;
 import com.microapp.footballmanager.service.team.TeamsService;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class TransferServiceImpl implements TransferService {
-    private static final int priceRate = 100000;
+    private static final int PRICE_RATE = 100000;
 
     private final TeamsService teamsService;
     private final PlayersService playersService;
@@ -25,7 +25,7 @@ public class TransferServiceImpl implements TransferService {
         PlayerDto byPlayer = playersService.findById(playerId);
         TeamDto transferFrom = teamsService.findById(byPlayer.getTeamId());
 
-        long rawCost = (byPlayer.getExperience() * priceRate) / byPlayer.getAge();
+        long rawCost = (byPlayer.getExperience() * PRICE_RATE) / byPlayer.getAge();
         long feeCost = (rawCost / 100) * transferFrom.getTransferFee();
         long totalCost = rawCost + feeCost;
 

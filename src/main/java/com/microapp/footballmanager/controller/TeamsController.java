@@ -1,16 +1,16 @@
 package com.microapp.footballmanager.controller;
 
-import com.microapp.footballmanager.dtos.team.CreateTeamDto;
-import com.microapp.footballmanager.dtos.team.TeamDto;
-import com.microapp.footballmanager.dtos.team.TeamWithPlayersDto;
-import com.microapp.footballmanager.dtos.team.UpdateTeamDto;
+import com.microapp.footballmanager.dto.team.CreateTeamDto;
+import com.microapp.footballmanager.dto.team.TeamDto;
+import com.microapp.footballmanager.dto.team.TeamWithPlayersDto;
+import com.microapp.footballmanager.dto.team.UpdateTeamDto;
 import com.microapp.footballmanager.service.team.TeamsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,14 +35,14 @@ public class TeamsController {
     @GetMapping
     @Operation(summary = "Get all teams",
             description = "Get all teams with pagination/sorting")
-    public List<TeamDto> getAll(@ParameterObject Pageable pageable) {
+    public Page<TeamDto> getAll(@ParameterObject Pageable pageable) {
         return teamsService.findAll(pageable);
     }
 
     @GetMapping("/full-data")
     @Operation(summary = "Get all teams with players data",
             description = "Get all teams with full players data and pagination/sorting")
-    public List<TeamWithPlayersDto> getAllWithPlayersData(@ParameterObject Pageable pageable) {
+    public Page<TeamWithPlayersDto> getAllWithPlayersData(@ParameterObject Pageable pageable) {
         return teamsService.findAllWithPlayerData(pageable);
     }
 
@@ -51,6 +51,13 @@ public class TeamsController {
             description = "Get specific team data by its id")
     public TeamDto getById(@PathVariable Long id) {
         return teamsService.findById(id);
+    }
+
+    @GetMapping("/full-data/{id}")
+    @Operation(summary = "Get team by id with players data",
+            description = "Get specific team with full players data by its id")
+    public TeamWithPlayersDto getByIdWithPlayerData(@PathVariable Long id) {
+        return teamsService.findByWithPlayerDataById(id);
     }
 
     @PostMapping

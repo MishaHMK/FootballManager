@@ -1,4 +1,4 @@
-## ⚽: **Football Team Management** ⚽
+## ⚽ **Football Team Management** ⚽
 
 Java Spring Boot backend API of system for searching football teams, players and complete transfers
 
@@ -12,9 +12,8 @@ Java Spring Boot backend API of system for searching football teams, players and
 7. In src/main/recources/application.properties put proper PostgreSQL db data:
    <img width="883" height="302" alt="image" src="https://github.com/user-attachments/assets/3ea9450d-81f1-40b3-a3e2-a9992d38496a" />
 
-8. Run project `mvn clean install` and then `java -jar target/FootballManager-0.0.1-SNAPSHOT.jar`
-
-
+8. Сompile project `mvn clean install` 
+9. Run project `java -jar target/FootballManager-0.0.1-SNAPSHOT.jar`
 
 ## Test how project works: [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/team66-9067/michhmk-public/collection/5zle125/football-management-api) 
 

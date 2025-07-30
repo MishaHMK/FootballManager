@@ -1,4 +1,4 @@
-package com.microapp.footballmanager.dtos.team;
+package com.microapp.footballmanager.dto.team;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -17,8 +17,8 @@ public class UpdateTeamDto {
     @NotNull(message = "Team budget number in $ is required")
     private Long budget;
 
-    @Min(0)
-    @Max(10)
+    @Min(value = 0, message = "Team transfer fee must be at least 0")
+    @Max(value = 10, message = "Team transfer fee can't be bigger than 10")
     @NotNull(message = "Team transfer fee number is required")
     private Short transferFee;
 }

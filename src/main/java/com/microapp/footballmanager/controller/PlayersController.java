@@ -1,15 +1,16 @@
 package com.microapp.footballmanager.controller;
 
-import com.microapp.footballmanager.dtos.player.CreatePlayerDto;
-import com.microapp.footballmanager.dtos.player.PlayerDto;
-import com.microapp.footballmanager.dtos.player.UpdatePlayerDto;
+import com.microapp.footballmanager.dto.player.CreatePlayerDto;
+import com.microapp.footballmanager.dto.player.PlayerDto;
+import com.microapp.footballmanager.dto.player.SimplePlayerDto;
+import com.microapp.footballmanager.dto.player.UpdatePlayerDto;
 import com.microapp.footballmanager.service.player.PlayersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class PlayersController {
     @GetMapping
     @Operation(summary = "Get all players",
             description = "Get all players with pagination/sorting")
-    public List<PlayerDto> getAll(@ParameterObject Pageable pageable) {
+    public Page<PlayerDto> getAll(@ParameterObject Pageable pageable) {
         return playersService.findAll(pageable);
     }
 
@@ -47,7 +48,7 @@ public class PlayersController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create player",
             description = "Create new player with given data")
-    public PlayerDto createNew(@Valid @RequestBody CreatePlayerDto playerDto) {
+    public SimplePlayerDto createNew(@Valid @RequestBody CreatePlayerDto playerDto) {
         return playersService.save(playerDto);
     }
 

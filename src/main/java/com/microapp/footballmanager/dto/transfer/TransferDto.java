@@ -1,10 +1,9 @@
-package com.microapp.footballmanager.dtos.transfer;
+package com.microapp.footballmanager.dto.transfer;
 
 import lombok.Data;
 
 @Data
 public class TransferDto {
-    private Long id;
     private Long playerId;
     private Long fromTeamId;
     private Long toTeamId;

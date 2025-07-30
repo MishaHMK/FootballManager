@@ -1,9 +1,10 @@
 package com.microapp.footballmanager.mapper;
 
 import com.microapp.footballmanager.config.MapperConfig;
-import com.microapp.footballmanager.dtos.player.CreatePlayerDto;
-import com.microapp.footballmanager.dtos.player.PlayerDto;
-import com.microapp.footballmanager.dtos.player.UpdatePlayerDto;
+import com.microapp.footballmanager.dto.player.CreatePlayerDto;
+import com.microapp.footballmanager.dto.player.PlayerDto;
+import com.microapp.footballmanager.dto.player.SimplePlayerDto;
+import com.microapp.footballmanager.dto.player.UpdatePlayerDto;
 import com.microapp.footballmanager.model.Player;
 import com.microapp.footballmanager.model.Position;
 import com.microapp.footballmanager.model.Team;
@@ -22,6 +23,9 @@ import org.mapstruct.Named;
 public interface PlayerMapper {
     @Mapping(target = "positions", source = "positions", qualifiedByName = "positionToString")
     PlayerDto toDto(Player player);
+
+    @Mapping(target = "teamId", source = "team.id")
+    SimplePlayerDto toSimpleDto(Player player);
 
     @Mapping(target = "team", source = "teamId", qualifiedByName = "teamById")
     @Mapping(target = "positions", source = "positionIds", qualifiedByName = "positionsByIds")

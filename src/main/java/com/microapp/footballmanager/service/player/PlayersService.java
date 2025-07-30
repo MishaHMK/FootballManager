@@ -1,17 +1,18 @@
 package com.microapp.footballmanager.service.player;
 
-import com.microapp.footballmanager.dtos.player.CreatePlayerDto;
-import com.microapp.footballmanager.dtos.player.PlayerDto;
-import com.microapp.footballmanager.dtos.player.UpdatePlayerDto;
-import java.util.List;
+import com.microapp.footballmanager.dto.player.CreatePlayerDto;
+import com.microapp.footballmanager.dto.player.PlayerDto;
+import com.microapp.footballmanager.dto.player.SimplePlayerDto;
+import com.microapp.footballmanager.dto.player.UpdatePlayerDto;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface PlayersService {
-    List<PlayerDto> findAll(Pageable pageable);
+    Page<PlayerDto> findAll(Pageable pageable);
 
     PlayerDto findById(long id);
 
-    PlayerDto save(CreatePlayerDto createPlayerDto);
+    SimplePlayerDto save(CreatePlayerDto createPlayerDto);
 
     void deleteById(long id);
 

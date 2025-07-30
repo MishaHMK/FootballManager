@@ -1,10 +1,10 @@
 package com.microapp.footballmanager.mapper;
 
 import com.microapp.footballmanager.config.MapperConfig;
-import com.microapp.footballmanager.dtos.team.CreateTeamDto;
-import com.microapp.footballmanager.dtos.team.TeamDto;
-import com.microapp.footballmanager.dtos.team.TeamWithPlayersDto;
-import com.microapp.footballmanager.dtos.team.UpdateTeamDto;
+import com.microapp.footballmanager.dto.team.CreateTeamDto;
+import com.microapp.footballmanager.dto.team.TeamDto;
+import com.microapp.footballmanager.dto.team.TeamWithPlayersDto;
+import com.microapp.footballmanager.dto.team.UpdateTeamDto;
 import com.microapp.footballmanager.model.Player;
 import com.microapp.footballmanager.model.Team;
 import java.util.Set;

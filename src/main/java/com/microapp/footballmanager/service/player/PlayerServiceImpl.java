@@ -1,17 +1,17 @@
 package com.microapp.footballmanager.service.player;
 
-import com.microapp.footballmanager.dtos.player.CreatePlayerDto;
-import com.microapp.footballmanager.dtos.player.PlayerDto;
-import com.microapp.footballmanager.dtos.player.UpdatePlayerDto;
+import com.microapp.footballmanager.dto.player.CreatePlayerDto;
+import com.microapp.footballmanager.dto.player.PlayerDto;
+import com.microapp.footballmanager.dto.player.SimplePlayerDto;
+import com.microapp.footballmanager.dto.player.UpdatePlayerDto;
 import com.microapp.footballmanager.mapper.PlayerMapper;
 import com.microapp.footballmanager.model.Player;
 import com.microapp.footballmanager.model.Team;
 import com.microapp.footballmanager.repository.PlayersRepository;
-import com.microapp.footballmanager.repository.PositionsRepository;
 import com.microapp.footballmanager.repository.TeamsRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,16 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PlayerServiceImpl implements PlayersService {
     private final PlayersRepository playersRepository;
-    private final PositionsRepository positionsRepository;
     private final TeamsRepository teamsRepository;
     private final PlayerMapper playerMapper;
 
     @Override
-    public List<PlayerDto> findAll(Pageable pageable) {
+    public Page<PlayerDto> findAll(Pageable pageable) {
         return playersRepository.findAll(pageable)
-                .stream()
-                .map(playerMapper::toDto)
-                .toList();
+                .map(playerMapper::toDto);
     }
 
     @Override
@@ -41,16 +38,17 @@ public class PlayerServiceImpl implements PlayersService {
 
     @Transactional
     @Override
-    public PlayerDto save(CreatePlayerDto createPlayerDto) {
+    public SimplePlayerDto save(CreatePlayerDto createPlayerDto) {
         Player newPlayer = playerMapper.toEntity(createPlayerDto);
-        return playerMapper.toDto(playersRepository.save(newPlayer));
+        return playerMapper.toSimpleDto(playersRepository.save(newPlayer));
     }
 
     @Transactional
     @Override
     public void deleteById(long id) {
-        getPlayerById(id);
-        playersRepository.deleteById(id);
+        if (checkPlayerExists(id)) {
+            playersRepository.deleteById(id);
+        }
     }
 
     @Transactional
@@ -79,5 +77,9 @@ public class PlayerServiceImpl implements PlayersService {
     private Player getPlayerById(Long id) {
         return playersRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Can't find player by id " + id));
+    }
+
+    private boolean checkPlayerExists(Long id) {
+        return playersRepository.existsById(id);
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class TransferDto {
+    private Long id;
     private Long playerId;
     private Long fromTeamId;
     private Long toTeamId;

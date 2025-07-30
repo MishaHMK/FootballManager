@@ -1,8 +1,10 @@
 ## ⚽ **Football Team Management** ⚽
 
 Java Spring Boot backend API of system for managing Football Teams, Players and Transfers
-
-Java 17, Maven, Spring Boot, Hibernate, PostgreSQL
+- Java 17, Maven, Spring Boot, Hibernate, MapStruct, Lombok, PostgreSQL
+- Crud operations for all entities (Players + their Positions, Teams and Transfer operations) 
+- Layered architecture (Repository - Service - Controller) 
+- Postman collection [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/team66-9067/michhmk-public/collection/5zle125/football-management-api) 
 
 ## :computer: **How to run the project**
 1. Download [Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) and [Maven](https://maven.apache.org/install.html)

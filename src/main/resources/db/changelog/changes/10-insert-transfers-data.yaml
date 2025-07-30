@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-transfers-data
+      author: footballManager
+      changes:
+        - insert:
+            tableName: transfers
+            columns:
+              - column:
+                  name: player_id
+                  value: '3'
+              - column:
+                  name: to_team_id
+                  value: '2'
+              - column:
+                  name: from_team_id
+                  value: '1'
+              - column:
+                  name: transfer_cost
+                  value: '172200'
+              - column:
+                  name: transfer_date
+                  value: '2025-07-30 09:12:49.832618'
+              - column:
+                  name: status
+                  value: 'COMPLETED'
+
+        - insert:
+            tableName: transfers
+            columns:
+              - column:
+                  name: player_id
+                  value: '6'
+              - column:
+                  name: to_team_id
+                  value: '1'
+              - column:
+                  name: from_team_id
+                  value: '2'
+              - column:
+                  name: transfer_cost
+                  value: '323072'
+              - column:
+                  name: transfer_date
+                  value: '2025-07-30 09:32:56.110143'
+              - column:
+                  name: status
+                  value: 'COMPLETED'

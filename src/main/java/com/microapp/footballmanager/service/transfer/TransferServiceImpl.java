@@ -4,9 +4,17 @@ import com.microapp.footballmanager.dto.player.PlayerDto;
 import com.microapp.footballmanager.dto.team.TeamDto;
 import com.microapp.footballmanager.dto.transfer.TransferDto;
 import com.microapp.footballmanager.exception.TransferProcessingException;
+import com.microapp.footballmanager.mapper.TransferMapper;
+import com.microapp.footballmanager.model.Player;
+import com.microapp.footballmanager.model.Team;
+import com.microapp.footballmanager.model.Transfer;
+import com.microapp.footballmanager.repository.TransferRepository;
 import com.microapp.footballmanager.service.player.PlayersService;
 import com.microapp.footballmanager.service.team.TeamsService;
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +25,8 @@ public class TransferServiceImpl implements TransferService {
 
     private final TeamsService teamsService;
     private final PlayersService playersService;
+    private final TransferRepository transferRepository;
+    private final TransferMapper transferMapper;
 
     @Transactional
     @Override
@@ -29,17 +39,66 @@ public class TransferServiceImpl implements TransferService {
         long feeCost = (rawCost / 100) * transferFrom.getTransferFee();
         long totalCost = rawCost + feeCost;
 
-        validatePlayerTransfer(transferTo, transferFrom, byPlayer, totalCost);
+        validatePlayerTransfer(transferTo, byPlayer, totalCost);
 
         teamsService.updateBudget(toTeamId, transferTo.getBudget() - totalCost);
         teamsService.updateBudget(byPlayer.getTeamId(), transferFrom.getBudget() + totalCost);
         playersService.updateTeam(playerId, toTeamId);
 
-        return new TransferDto(playerId, byPlayer.getTeamId(), toTeamId, totalCost);
+        Transfer transfer = createTransfer(playerId, toTeamId,
+                transferFrom.getId(), totalCost);
+
+        return transferMapper.toDto(transferRepository.save(transfer));
     }
 
-    private void validatePlayerTransfer(TeamDto transferTo, TeamDto transferFrom,
-                                        PlayerDto player, Long totalCost) {
+    @Override
+    public Page<TransferDto> findAll(Pageable pageable) {
+        return transferRepository.findAll(pageable)
+                .map(transferMapper::toDto);
+    }
+
+    @Override
+    public TransferDto findById(Long id) {
+        Transfer transferWithData = getTransferById(id);
+        return transferMapper.toDto(transferWithData);
+    }
+
+    @Override
+    public TransferDto cancelTransfer(Long id) {
+        Transfer transferWithData = getTransferById(id);
+        Long feeAmount = (transferWithData.getTransferCost() / 100)
+                * transferWithData.getFromTeam().getTransferFee();
+        Long refundCost = transferWithData.getTransferCost()
+                - feeAmount;
+        Team fromTeam = transferWithData.getFromTeam();
+        Team toTeam = transferWithData.getToTeam();
+
+        teamsService.updateBudget(fromTeam.getId(),
+                fromTeam.getBudget() - refundCost);
+        teamsService.updateBudget(toTeam.getId(),
+                toTeam.getBudget() + refundCost);
+
+        transferWithData.setStatus(Transfer.TransferStatus.CANCELLED);
+
+        return transferMapper.toDto(transferRepository.save(transferWithData));
+    }
+
+    private Transfer getTransferById(Long id) {
+        return transferRepository.getTransferWithData(id);
+    }
+
+    private Transfer createTransfer(Long playerId, Long toTeamId,
+                                    Long fromTeamId, Long transferCost) {
+        return new Transfer()
+                .setPlayer(new Player().setId(playerId))
+                .setFromTeam(new Team().setId(fromTeamId))
+                .setToTeam(new Team().setId(toTeamId))
+                .setTransferCost(transferCost)
+                .setTransferDate(LocalDateTime.now())
+                .setStatus(Transfer.TransferStatus.COMPLETED);
+    }
+
+    private void validatePlayerTransfer(TeamDto transferTo, PlayerDto player, Long totalCost) {
         if (player.getTeamId() == null) {
             throw new TransferProcessingException("Player is not currently assigned to any team");
         }

@@ -15,3 +15,7 @@ databaseChangeLog:
       file: db/changelog/changes/07-insert-players-data.yaml
   - include:
       file: db/changelog/changes/08-insert-players-positions-data.yaml
+  - include:
+      file: db/changelog/changes/09-create-transfers-table.yaml
+  - include:
+      file: db/changelog/changes/10-insert-transfers-data.yaml

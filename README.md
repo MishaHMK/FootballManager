@@ -1,6 +1,8 @@
 ## ⚽ **Football Team Management** ⚽
 
-Java Spring Boot backend API of system for managing football teams, players and complete transfers
+Java Spring Boot backend API of system for managing Football Teams, Players and Transfers
+
+Java 17, Maven, Spring Boot, Hibernate, PostgreSQL
 
 ## :computer: **How to run the project**
 1. Download [Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) and [Maven](https://maven.apache.org/install.html).
